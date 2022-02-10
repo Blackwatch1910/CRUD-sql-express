@@ -39,6 +39,17 @@ app.post("/create", (req, res) => {
     })
 })
 
+app.get("/getEmployee", (req, res) => {
+    db.query('SELECT * from employees', (err, result) => {
+        if (err) {
+            console.log(`Some error occurred: ${err}`);
+        }
+        else {
+            res.send(result);
+        }
+    })
+})
+
 app.listen(3001, () => {
     console.log(`Server running on port 3001`)
 })
